@@ -57,3 +57,32 @@ class T1 extends Thread{
 注意的点：继承Thread为了它是一个方法，方法是静态的，runnable 本来就一个。
 ~~~
 
+3.
+
+在 Java 里，`==` 比较的是 **两个对象的引用地址**，而不是内容。
+
+比较内容用
+
+~~~java
+a.equals("Q")
+~~~
+
+
+
+
+
+
+
+函数篇
+
+~~~java
+Scanner scanner  = new Scanner(System.in);
+String a = scanner.next()//从输入中读取 下一个“字符串”（以空格、回车为分隔）
+    a.toUpperCase() 把字符串转换为 大写
+    a.charAt() 取字符串的第 0 个字符（即第一个字符）。
+
+~~~
+
+~~~~java
+~~~~
+

@@ -1,4 +1,4 @@
-python开发技术
+8 1#include<iostream>2using namespace std;3int main(){4    int a,b,c,d;5    cin>>a>>b>>c>>d;6    printf("DIFERENCA = %d",(a*b-c*d));7    return 0;8}c++
 
 ~~~java
 C程序是运行前直接编译成CPU能执行的机器码，所以非常快。
