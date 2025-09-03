@@ -3774,3 +3774,109 @@ void synchronized fanfa(){
 //找到原因了this对象锁是非公平锁
 ~~~
 
+文件操作
+
+~~~java
+存储数据的地方
+~~~
+
+文件流  输入，输出流
+
+创建文件对象
+
+~~~java
+由内存到硬盘
+    String filepath = "D://a.txt";
+        File file =  new File(filepath);
+        file.createNewFile();
+~~~
+
+获取文件信息
+
+~~~java
+~~~
+
+判断某路径下的文件是否存在，存在删除(逻辑)
+
+~~~JAVA
+String filepath = "d:\\new.txt";
+File file = new file(filepath);
+if(file.exists()){
+    if(file.delete()){
+        sout("删除成功");
+    }else{
+        sout（删除失败）
+    }
+}else{
+    sout（"文件不存在"）;
+}
+//注意delete（）删除成功返回true
+//java中目录也是文件（当然）。
+~~~
+
+~~~java
+file.mkdir()//创建一级目录(创建一层，无子目录)
+file.mkdirs()//创建多级目录 如D:\\a\\v\\c\\das;
+~~~
+
+java IO流的原理
+
+~~~java
+输入input 读取外部数据 从（磁盘光盘等）到程序（内存中）。
+输出output
+~~~
+
+流的分类
+
+~~~java
+操作的数据单位：字节流，字符流（文本）
+    流向：输入流，输出流。
+    流的角色：节点流，处理路流，包装流
+~~~
+
+![image-20250903203312427](%E5%9B%BE%E7%89%87/image-20250903203312427.png)
+
+inputstream，ouputstream都是抽象类，不能直接创建
+
+Reader， 字符输入流   writer 字符输出流  也是抽象类。
+
+
+
+**流与文件**
+
+~~~java
+文件通过流进出入内存（流运输文件）
+~~~
+
+
+
+![image-20250903204609586](%E5%9B%BE%E7%89%87/image-20250903204609586.png)
+
+~~~java
+//不同输入流的继承关系
+~~~
+
+**FileInputStream类**
+
+~~~
+public void readFile01() throws IOException {
+        String filepath = "D:\\note01.txt";
+        int readDate = 0;
+         FileInputStream fileInputStream =  new FileInputStream(filepath);
+         //创建Fileinputstream对象，用于读取文件
+        while((readDate=fileInputStream.read())==-1){
+            //文件末尾返回-1。
+            System.out.println((char) readDate); //每次读取一个字符之后下一个
+            //一定记得关闭流
+            //释放资源
+            fileInputStream.close();
+        }
+        byte[] buf = new byte[8];
+ //read（buf）//读取8个字节。
+~~~
+
+~~~
+一个汉族占三个字节一个 字节（Byte） = 8 位（bit）。
+字节流一次只会读一个字节。 读汉字出现乱码 
+~~~
+

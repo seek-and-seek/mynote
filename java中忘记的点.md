@@ -86,3 +86,4 @@ String a = scanner.next()//从输入中读取 下一个“字符串”（以空�
 ~~~~java
 ~~~~
 
+`@Test` 是 **Java 中 JUnit 框架**里最常用的注解之一，主要用于 **单元测试**。
