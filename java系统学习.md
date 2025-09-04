@@ -3859,6 +3859,7 @@ Reader， 字符输入流   writer 字符输出流  也是抽象类。
 **FileInputStream类**
 
 ~~~
+//我的代码
 public void readFile01() throws IOException {
         String filepath = "D:\\note01.txt";
         int readDate = 0;
@@ -3878,5 +3879,178 @@ public void readFile01() throws IOException {
 ~~~
 一个汉族占三个字节一个 字节（Byte） = 8 位（bit）。
 字节流一次只会读一个字节。 读汉字出现乱码 
+~~~
+
+~~~java
+public void readFile01() throws IOException {
+        String filepath = "D:\\note01.txt";
+    	byte[] buf = new byte[8];
+        int readDate = 0;
+         FileInputStream fileInputStream =  new FileInputStream(filepath);
+         //创建Fileinputstream对象，用于读取文件
+        while((readDate=fileInputStream.read(buf))==-1){
+            //文件末尾返回-1。
+            System.out.println(new String(buf,0,readDate)); //将读取的字节转化为字符
+            //一定记得关闭流
+            //释放资源
+            fileInputStream.close();
+        }
+ //read（buf）//返回实际读取的字节数。
+~~~
+
+### 输入流
+
+Fileoutputstream
+
+![image-20250904192654220](%E5%9B%BE%E7%89%87/image-20250904192654220.png)
+
+~~~java
+FileOutputStream文件不存在自动创建
+write（） //使用时会直接覆盖原内容
+    FileOutStream(filepath,true)//改为追加
+~~~
+
+~~~java
+package com.tsj.FileOutputStream;
+
+import org.junit.Test;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+/**
+ * @author 田建硕
+ * @version 1.0
+ */
+public class FiileOutputStream01
+{
+    public static void main(String[] args) {
+
+    }
+    @Test
+    public void writeFile() throws IOException {
+        FileOutputStream OutputStream01 = null;
+        String filepath = "D:\\a01.txt";
+        try {
+             OutputStream01 =  new FileOutputStream(filepath);
+             OutputStream01.write('a');//传入的是字节 传入一个字节
+            String a = "hello,word";
+            //字符串-->字节数组
+            OutputStream01.write(a.getBytes());//getBytes()将string转为byte字节数组
+            OutputStream01.write(a.getBytes(),0,3);//取从0开始的前三个字节
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally{
+            OutputStream01.close();
+        }
+    }
+}
+~~~
+
+### 文件拷贝
+
+内存是主体，input是read是输入流
+
+对输入输出流的运用
+
+~~~java
+package com.tsj.and;
+
+import com.sun.tools.javac.Main;
+import org.junit.Test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * @author 田建硕
+ * @version 1.0
+ */
+public class copy {
+    public static void main(String[] args) {
+
+    }
+    @Test
+    public void copy() throws IOException {
+      String  filepath = "D:\\note01.txt";
+      int readdate = 0;
+        FileInputStream input = new FileInputStream(filepath);
+        String a =new String();
+        while((readdate = input.read())!=-1){
+            a = a + (char)readdate;
+        }
+        FileOutputStream output = null;
+        output = new FileOutputStream("D:\\a001.txt");
+        output.write(a.getBytes());
+        input.close();
+        output.close();
+    }
+}
+~~~
+
+~~~java
+改进：读取部分数据就写入
+    //边读边写
+    byte[] buf = new byte[1024];
+	int readlend = 0;
+    while((readlend = fileIntputStream.read(buf))){
+        fileOutputStream.write(buf,0,readlend);
+    }
+~~~
+
+### FileReader FilWriter（字符流）
+
+![image-20250904204125389](%E5%9B%BE%E7%89%87/image-20250904204125389.png)
+
+![image-20250904204040822](%E5%9B%BE%E7%89%87/image-20250904204040822.png)
+
+![image-20250904204407670](%E5%9B%BE%E7%89%87/image-20250904204407670.png)
+
+~~~java
+package com.tsj.reader;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
+ * @author 田建硕
+ * @version 1.0
+ */
+public class fileread {
+    public static void main(String[] args) {
+        String filepath ="D:\\story.txt";
+        FileReader fileReader  = null;
+        int readlend =0;
+        try {
+            fileReader = new FileReader(filepath);
+            while((readlend = fileReader.read()) !=-1){
+                System.out.print((char) readlend);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally{
+            try {
+                fileReader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+}
+//另外的一种方式
+String filepath ="D:\\story.txt";
+        FileReader fileReader  = null;
+        int readlend =0;
+        char[] buf = new char[10];
+        try {
+            fileReader = new FileReader(filepath);
+            while((readlend = fileReader.read(buf)) !=-1){
+                System.out.print(new String(buf,0,readlend));
+            }
 ~~~
 
