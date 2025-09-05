@@ -4054,3 +4054,96 @@ String filepath ="D:\\story.txt";
             }
 ~~~
 
+
+
+~~~java
+Filewrite写入：对应这输出流。
+ String filePath = "";
+FileWriter fileWriter = null;
+//写入单个字符
+1. fileWriter.writer('h');
+//写入后，一定要关闭close（） 或者刷新flash（）才可真正的写入
+//一定要注意。
+fileWriter.close();//都需要异常处理。
+//写入字符数组
+2.char[] char  = {'a','b','c'};
+fileWriter.write("char");
+
+3 //写入string转char【】
+    file.writer("tjsandllq".toCharArray());
+4 //写入整个String
+String a = "aaaadada";
+.writer(a);
+5 //写入部分的字符串
+    .writer(a,0,3)
+  //close() 内部有真正的写入：writeBytes（）
+~~~
+
+### 结点流和处理流
+
+![image-20250905195038055](%E5%9B%BE%E7%89%87/image-20250905195038055.png)
+
+~~~java
+//对某一特定数据源进行操作的流：结点流。特定数据源对应的结点流函数来处理。
+数据源存放数据的地方。 
+~~~
+
+~~~java
+//包装流
+//如：BufferdReader/BufferdWriter 对filereader和filewriter
+~~~
+
+![image-20250905200335349](C:/Users/86159/AppData/Roaming/Typora/typora-user-images/image-20250905200335349.png)
+
+~~~java
+//所以包装流可以对任意的结点流操作
+~~~
+
+一个包装类解决所有数据类型的输入输出
+
+~~~java
+向上转型，重写的方法也会继承，对应不同的数据类型
+~~~
+
+![image-20250905210656395](%E5%9B%BE%E7%89%87/image-20250905210656395.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
