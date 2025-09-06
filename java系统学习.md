@@ -4107,6 +4107,19 @@ String a = "aaaadada";
 
 ![image-20250905210656395](%E5%9B%BE%E7%89%87/image-20250905210656395.png)
 
+~~~java
+处理流 == 处理流
+~~~
+
+
+
+![d7a47854-05e7-4a44-aad4-368e2e7fe796](../%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%20(2)/xwechat_files/wxid_pnxxjq8mi47s22_c95e/temp/InputTemp/d7a47854-05e7-4a44-aad4-368e2e7fe796.png)
+
+~~~java
+//不会直接与数据源相连
+//修饰器模式（模拟）
+~~~
+
 
 
 
